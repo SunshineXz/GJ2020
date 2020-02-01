@@ -6,15 +6,31 @@ using UnityEngine;
 public class CharacterMovementController : MonoBehaviour
 {
     private CharacterController controller;
+
+    //Prefab
     public GameObject projectilePrefab;
 
+    //Objects
+    public GameObject shieldObject;
+    public ParticleSystem infiniteShootParticleSystem;
+    public ParticleSystem boostParticleSystem;
+
+    //Stun
     public float stunTime = 2.0f;
     private bool isStunned = false;
     private float stunnedtimer;
+    public bool shieldUp = false;
 
+    //Shoot
+    public bool infiniteShoot = false;
+    public float shootTimer = 0.0f;
+    public float shootCooldown = 2.0f;
+
+    //Movement
     public float movementSpeed = 4.0f;
     public float NORMAL_MOVEMENT_SPEED = 10.0f;
     public float rotationSpeed = 0.05f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +45,17 @@ public class CharacterMovementController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            var projectile = Instantiate(projectilePrefab, transform);
+            var canShoot = Time.time >= shootTimer || infiniteShoot;
 
-            projectile.GetComponent<SpitController>().shooter = gameObject;
-            projectile.transform.parent = null;
+            if(canShoot)
+            {
+                var projectile = Instantiate(projectilePrefab, transform);
+
+                projectile.GetComponent<SpitController>().shooter = gameObject;
+                projectile.transform.parent = null;
+
+                shootTimer = Time.time + shootCooldown;
+            }
         }
     }
 
@@ -61,16 +84,22 @@ public class CharacterMovementController : MonoBehaviour
     {
         if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
         {
-            Debug.Log("STUN");
-            // STUN THIS BITCH
-            isStunned = true;
-            stunnedtimer = Time.time + stunTime;
+            //if no protection -> stunned
+            if(!shieldUp)
+            {
+                Debug.Log("STUN");
+                // STUN THIS BITCH
+                isStunned = true;
+                stunnedtimer = Time.time + stunTime;
+            }
+           
         }
     }
 
-    internal void SetMovementSpeed(float movementSpeedMultiplier, float time)
+    public void SetMovementSpeed(float movementSpeedMultiplier, float time)
     {
         movementSpeed *= movementSpeedMultiplier;
+        boostParticleSystem.Play();
         StartCoroutine(ResetMovementSpeed(time));
     }
 
@@ -78,5 +107,35 @@ public class CharacterMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         movementSpeed = NORMAL_MOVEMENT_SPEED;
+        boostParticleSystem.Stop();
     }
+
+    public void SetShieldUp(float time)
+    {
+        shieldUp = true;
+        shieldObject.SetActive(true);
+        StartCoroutine(ShieldDown(time));
+    }
+
+    private IEnumerator ShieldDown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        shieldUp = false;
+        shieldObject.SetActive(false);
+    }
+
+    public void SetInfiniteShoot(float time)
+    {
+        infiniteShoot = true;
+        infiniteShootParticleSystem.Play();
+        StartCoroutine(InfiniteShootDown(time));
+    }
+
+    private IEnumerator InfiniteShootDown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        infiniteShoot = false;
+        infiniteShootParticleSystem.Stop();
+    }
+
 }
