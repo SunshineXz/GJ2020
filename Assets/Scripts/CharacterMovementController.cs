@@ -78,10 +78,13 @@ public class CharacterMovementController : MonoBehaviour
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
+            var walkMagnitude = new Vector2(x, y).SqrMagnitude();
+            anim.SetFloat("Walk", walkMagnitude);
             controller.Move(new Vector3(x, 0, y) * Time.deltaTime * movementSpeed);
         }
         else
         {
+            anim.SetFloat("Walk", 0.0f);
             isStunned = Time.time  <= stunnedtimer;
         }
 
