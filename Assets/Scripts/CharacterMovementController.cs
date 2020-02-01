@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController controller;
     public GameObject projectilePrefab;
+
     public float stunTime = 2.0f;
+    private bool isStunned = false;
+    private float stunnedtimer;
 
     public bool isStunned = false;
     public float stunnedtimer;
 
     public float movementSpeed = 4.0f;
+    public float NORMAL_MOVEMENT_SPEED = 10.0f;
     public float rotationSpeed = 0.05f;
 
     // Start is called before the first frame update
@@ -65,5 +69,17 @@ public class CharacterMovementController : MonoBehaviour
             isStunned = true;
             stunnedtimer = Time.time + stunTime;
         }
+    }
+
+    internal void SetMovementSpeed(float movementSpeedMultiplier, float time)
+    {
+        movementSpeed *= movementSpeedMultiplier;
+        StartCoroutine(ResetMovementSpeed(time));
+    }
+
+    private IEnumerator ResetMovementSpeed(float time)
+    {
+        yield return new WaitForSeconds(time);
+        movementSpeed = NORMAL_MOVEMENT_SPEED;
     }
 }

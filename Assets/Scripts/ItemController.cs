@@ -21,7 +21,7 @@ public class ItemController : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.E))
         {
-            currentEffectItem.Use(GetComponent<CharacterMovementController>());
+            UseItem();
         }
     }
 
@@ -29,7 +29,7 @@ public class ItemController : MonoBehaviour
     {
         if(currentEffectItem != null)
         {
-            //currentEffectItem.Use();
+            currentEffectItem.Use(GetComponent<CharacterMovementController>());
             currentEffectItem = null;
         }
     }
