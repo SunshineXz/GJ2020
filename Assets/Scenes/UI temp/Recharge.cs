@@ -13,6 +13,7 @@ public class Recharge : MonoBehaviour
         knobImage = transform.Find("knob").GetComponent<Image>();
 
         ready = new Ready();
+
     }
 
     private void Update()
@@ -39,14 +40,7 @@ public class Ready
     public void Update()
     {
         readyAmount += readyRegenAmount * Time.deltaTime;
-    }
-
-    public void TrySpendReady(int amount)
-    {
-        if (readyAmount >= amount)
-        {
-            readyAmount -= amount;
-        }
+        readyAmount = Mathf.Clamp(readyAmount, 0f, READY_MAX);
     }
 
     public float GetReadyNormalized ()
