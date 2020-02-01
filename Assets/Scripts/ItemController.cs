@@ -34,9 +34,14 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    public void PickUpRepairItem(RepairItem item)
+    public bool PickUpRepairItem(RepairItem item)
     {
-        currentRepairItem = item;
+        bool canPickUp = currentRepairItem == null;
+        if(canPickUp)
+        {
+            currentRepairItem = item;
+        }
+        return canPickUp;
     }
 
     public void PickUpEffectItem(EffectItem item)

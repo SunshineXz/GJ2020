@@ -7,12 +7,9 @@ public abstract class EffectItem : Item
 
     public abstract void Use(CharacterMovementController characterMovementController);
 
-    protected void OnTriggerEnter(Collider other)
+    public override void Pickup(ItemController itemController)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<ItemController>().PickUpEffectItem(this);
-            Destroy();
-        }
+        itemController.PickUpEffectItem(this);
+        Destroy();
     }
 }
