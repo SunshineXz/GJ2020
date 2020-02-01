@@ -51,7 +51,8 @@ public class CharacterMovementController : MonoBehaviour
 
         if (inputManager.GetAxisOrButtonDown("Spit", playerName))
         {
-            var canShoot = Time.time >= shootTimer || infiniteShoot;
+            var canShoot = Time.time >= GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME
+                || (infiniteShoot && Time.time >= GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN);
 
             if(canShoot)
             {
@@ -60,8 +61,9 @@ public class CharacterMovementController : MonoBehaviour
 
                 projectile.GetComponent<SpitController>().shooter = gameObject;
                 projectile.transform.parent = null;
+                projectile.transform.localScale = GlobalVariables.GlobalVariablesInstance.SHOOT_BASE_SCALE;
 
-                shootTimer = Time.time + shootCooldown;
+                shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
             }
         }
 
@@ -119,7 +121,7 @@ public class CharacterMovementController : MonoBehaviour
     private IEnumerator ResetMovementSpeed(float time, GameObject itemToDestroy)
     {
         yield return new WaitForSeconds(time);
-        movementSpeed = NORMAL_MOVEMENT_SPEED;
+        movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED;
         boostParticleSystem.Stop();
         Destroy(itemToDestroy);
     }
