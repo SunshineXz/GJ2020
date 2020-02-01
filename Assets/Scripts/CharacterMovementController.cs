@@ -57,11 +57,11 @@ public class CharacterMovementController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
-        {
-            // STUN THIS BITCH
-            isStunned = true;
-            stunnedtimer = Time.time + stunTime;
-        }
+        //if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
+        //{
+        //    // STUN THIS BITCH
+        //    isStunned = true;
+        //    stunnedtimer = Time.time + stunTime;
+        //}
     }
 }
