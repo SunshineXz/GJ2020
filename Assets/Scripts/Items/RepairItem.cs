@@ -3,16 +3,11 @@
 
 public class RepairItem : Item
 {
-    protected void OnTriggerEnter(Collider other)
+    public override void Pickup(ItemController itemController)
     {
-        if (other.CompareTag("Player"))
+        if(itemController.PickUpRepairItem(this))
         {
-            var itemController = other.GetComponent<ItemController>();
-            if (itemController.currentRepairItem == null)
-            {
-                itemController.PickUpRepairItem(this);
-                Destroy();
-            }
+            Destroy();
         }
     }
 }
