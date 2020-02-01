@@ -150,6 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42acfa85d66c9df499b0cccb9d376985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1:
+    playerName: 
+    controllerName: Keyboard
+  player2:
+    playerName: 
+    controllerName: Keyboard
 --- !u!4 &396243716
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 35.961002, y: 0, z: 0}
 --- !u!1 &1405861262
 GameObject:
@@ -642,6 +648,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 228113387763487971, guid: 21df41e714e00ce40b3ab76b92855ec3,
+        type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 396243715}
+    - target: {fileID: 228113387763487972, guid: 21df41e714e00ce40b3ab76b92855ec3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1256283844723532930, guid: 21df41e714e00ce40b3ab76b92855ec3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -736,6 +752,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 228113387763487971, guid: 21df41e714e00ce40b3ab76b92855ec3,
+        type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 396243715}
     - target: {fileID: 1256283844723532930, guid: 21df41e714e00ce40b3ab76b92855ec3,
         type: 3}
       propertyPath: m_LocalPosition.x
