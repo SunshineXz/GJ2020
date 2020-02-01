@@ -9,6 +9,6 @@ public class BoostItem : EffectItem
 
     public override void Use(CharacterMovementController characterMovementController)
     {
-        characterMovementController.SetMovementSpeedBoost(movementSpeedMultiplier, boostTime, gameObject);
+        characterMovementController.SetMovementSpeedBoost(GlobalVariables.GlobalVariablesInstance.SPEED_UP_MOVEMENT_BONUS, GlobalVariables.GlobalVariablesInstance.SPEED_UP_DURATION, gameObject);
     }
 }
