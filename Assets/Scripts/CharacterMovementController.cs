@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
+    public bool canMove = true;
     private CharacterController controller;
     public GameObject projectilePrefab;
+    public GameObject bitchSlapCollider;
 
     public float stunTime = 2.0f;
     private bool isStunned = false;
@@ -20,6 +22,7 @@ public class CharacterMovementController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        bitchSlapCollider.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,18 +30,24 @@ public class CharacterMovementController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Spit"))
         {
             var projectile = Instantiate(projectilePrefab, transform);
 
             projectile.GetComponent<SpitController>().shooter = gameObject;
             projectile.transform.parent = null;
         }
+
+        if(Input.GetButtonDown("BitchSlap"))
+        {
+            bitchSlapCollider.SetActive(true);
+            StartCoroutine(WaitToSlap());
+        }
     }
 
     private void MovePlayer()
     {
-        if(!isStunned)
+        if(!isStunned && canMove)
         {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
@@ -61,10 +70,8 @@ public class CharacterMovementController : MonoBehaviour
     {
         if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
         {
-            Debug.Log("STUN");
             // STUN THIS BITCH
-            isStunned = true;
-            stunnedtimer = Time.time + stunTime;
+            StunPlayer();
         }
     }
 
@@ -78,5 +85,22 @@ public class CharacterMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         movementSpeed = NORMAL_MOVEMENT_SPEED;
+    }
+
+    public void ReceiveBitchSlap()
+    {
+        StunPlayer();
+    }
+
+    public void StunPlayer()
+    {
+        isStunned = true;
+        stunnedtimer = Time.time + stunTime;
+    }
+
+    IEnumerator WaitToSlap()
+    {
+        yield return new WaitForSeconds(0.5f);
+        bitchSlapCollider.SetActive(false);
     }
 }
