@@ -48,7 +48,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetButtonDown("Spit"))
+        if (Input.GetAxis("Spit") > 0 || Input.GetButtonDown("Spit"))
         {
             var canShoot = Time.time >= shootTimer || infiniteShoot;
 
@@ -64,7 +64,7 @@ public class CharacterMovementController : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("BitchSlap"))
+        if(Input.GetAxis("BitchSlap") > 0 || Input.GetButtonDown("BitchSlap"))
         {
             bitchSlapCollider.SetActive(true);
             StartCoroutine(WaitToSlap());
