@@ -299,12 +299,19 @@ MonoBehaviour:
       _tag: Movements
       _id: 8
       _userAssignable: 1
+    - _name: MenuControls
+      _descriptiveName: MenuControls
+      _tag: MenuControls
+      _id: 11
+      _userAssignable: 1
     actionCategoryMap:
       list:
       - categoryId: 0
         actionIds: 
       - categoryId: 8
         actionIds: 000000000100000002000000030000000400000006000000
+      - categoryId: 11
+        actionIds: 
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -977,7 +984,7 @@ MonoBehaviour:
     controllerMapEnablerRuleSets: []
     playerIdCounter: 3
     actionIdCounter: 8
-    actionCategoryIdCounter: 11
+    actionCategoryIdCounter: 12
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
     joystickLayoutIdCounter: 2
