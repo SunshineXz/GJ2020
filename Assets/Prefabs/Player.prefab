@@ -10217,7 +10217,7 @@ GameObject:
   - component: {fileID: 717716272539730289}
   - component: {fileID: 717716272539730288}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10231,7 +10231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717716272539730303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.244959, y: 3.3654509, z: 20.551718}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 717716273790484918}
@@ -10274,13 +10274,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5000001
+  m_Height: 4.25
+  m_Radius: 1.33
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 2.12, z: 0}
 --- !u!114 &717716272539730292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10305,8 +10305,7 @@ MonoBehaviour:
   infiniteShoot: 0
   shootTimer: 0
   shootCooldown: 2
-  inputManager: {fileID: 0}
-  playerName: Player1
+  playerID: 0
   movementSpeed: 10
   NORMAL_MOVEMENT_SPEED: 10
   rotationSpeed: 0.05
