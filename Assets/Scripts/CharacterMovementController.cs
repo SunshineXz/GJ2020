@@ -96,7 +96,7 @@ public class CharacterMovementController : MonoBehaviour
             if (!isStunned)
             {
                 anim.SetBool("Stunned", false);
-                stunParticleSystem.Stop();
+                stunParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
         }
 
