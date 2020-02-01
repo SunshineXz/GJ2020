@@ -6,11 +6,12 @@ public class SpitController : MonoBehaviour
 {
     public float speed = 1.0f;
     public GameObject shooter;
+    public float shootingTime = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DestroyProjectile());
     }
 
     // Update is called once per frame
@@ -24,5 +25,12 @@ public class SpitController : MonoBehaviour
         // Check if it's not himself
         if(!collider.CompareTag("Player") && shooter != collider.gameObject)
             Destroy(gameObject);
+    }
+
+    IEnumerator DestroyProjectile()
+    {
+        yield return new WaitForSeconds(shootingTime);
+
+        Destroy(gameObject);
     }
 }    
