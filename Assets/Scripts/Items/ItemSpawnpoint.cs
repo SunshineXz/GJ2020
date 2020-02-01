@@ -6,6 +6,7 @@ using Random = System.Random;
 
 public class ItemSpawnpoint : MonoBehaviour
 {
+    public bool isRepair = false;
     public List<GameObject> items;
     public Item currentItem;
 
@@ -27,9 +28,9 @@ public class ItemSpawnpoint : MonoBehaviour
         currentItem = item;
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && currentItem != null)
         {
             currentItem.Pickup(other.GetComponent<ItemController>());
             StartCoroutine(SetRandomItem());

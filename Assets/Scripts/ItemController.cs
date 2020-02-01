@@ -53,8 +53,9 @@ public class ItemController : MonoBehaviour
     {
         if(currentRepairItem != null)
         {
-            currentRepairItem.transform.position = transform.position + transform.forward * 2;
+            currentRepairItem.transform.position = transform.position - transform.forward * 5;
             currentRepairItem.gameObject.SetActive(true);
+            currentRepairItem.SetColliderActive(true);
             currentRepairItem = null;
         }
     }

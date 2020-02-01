@@ -8,6 +8,6 @@ public class ShieldItem : EffectItem
 
     public override void Use(CharacterMovementController characterMovementController)
     {
-        characterMovementController.SetShieldUp(shieldTime);
+        characterMovementController.SetShieldUp(shieldTime, gameObject);
     }
 }

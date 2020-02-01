@@ -8,6 +8,6 @@ public class InfiniteShootItem : EffectItem
 
     public override void Use(CharacterMovementController characterMovementController)
     {
-        characterMovementController.SetInfiniteShoot(buffTime);
+        characterMovementController.SetInfiniteShoot(buffTime, gameObject);
     }
 }
