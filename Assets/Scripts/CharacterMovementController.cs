@@ -30,10 +30,11 @@ public class CharacterMovementController : MonoBehaviour
     public float shootCooldown = 2.0f;
 
     //Movement
+    public InputManager inputManager;
+    public string playerName;
     public float movementSpeed = 4.0f;
     public float NORMAL_MOVEMENT_SPEED = 10.0f;
     public float rotationSpeed = 0.05f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetAxis("Spit") > 0 || Input.GetButtonDown("Spit"))
+        if (inputManager.GetAxisOrButtonDown("Spit", playerName))
         {
             var canShoot = Time.time >= shootTimer || infiniteShoot;
 
@@ -64,7 +65,7 @@ public class CharacterMovementController : MonoBehaviour
             }
         }
 
-        if(Input.GetAxis("BitchSlap") > 0 || Input.GetButtonDown("BitchSlap"))
+        if(inputManager.GetAxisOrButtonDown("BitchSlap", playerName))
         {
             bitchSlapCollider.SetActive(true);
             StartCoroutine(WaitToSlap());
@@ -75,8 +76,8 @@ public class CharacterMovementController : MonoBehaviour
     {
         if(!isStunned && canMove)
         {
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
+            float x = inputManager.GetAxis("Horizontal", playerName);
+            float y = inputManager.GetAxis("Vertical", playerName);
 
             var walkMagnitude = new Vector2(x, y).SqrMagnitude();
             anim.SetFloat("Walk", walkMagnitude);
@@ -88,8 +89,8 @@ public class CharacterMovementController : MonoBehaviour
             isStunned = Time.time  <= stunnedtimer;
         }
 
-        float rx = Input.GetAxis("HorizontalRotation");
-        float ry = Input.GetAxis("VerticalRotation");
+        float rx = inputManager.GetAxis("HorizontalRotation", playerName);
+        float ry = inputManager.GetAxis("VerticalRotation", playerName);
 
         if(rx != 0 || ry != 0)
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(rx, 0, ry) * Time.deltaTime, transform.up), rotationSpeed);
