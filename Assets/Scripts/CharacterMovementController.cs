@@ -9,8 +9,8 @@ public class CharacterMovementController : MonoBehaviour
     public GameObject projectilePrefab;
     public float stunTime = 2.0f;
 
-    bool isStunned = false;
-    float stunnedtimer;
+    public bool isStunned = false;
+    public float stunnedtimer;
 
     public float movementSpeed = 4.0f;
     public float rotationSpeed = 0.05f;
@@ -46,7 +46,7 @@ public class CharacterMovementController : MonoBehaviour
         }
         else
         {
-            isStunned = Time.time  >= stunnedtimer;
+            isStunned = Time.time  <= stunnedtimer;
         }
 
         float rx = Input.GetAxis("HorizontalRotation");
@@ -58,11 +58,12 @@ public class CharacterMovementController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        //if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
-        //{
-        //    // STUN THIS BITCH
-        //    isStunned = true;
-        //    stunnedtimer = Time.time + stunTime;
-        //}
+        if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
+        {
+            Debug.Log("STUN");
+            // STUN THIS BITCH
+            isStunned = true;
+            stunnedtimer = Time.time + stunTime;
+        }
     }
 }

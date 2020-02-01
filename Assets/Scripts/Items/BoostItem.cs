@@ -6,6 +6,6 @@ public class BoostItem : EffectItem
 {
     public override void Use(CharacterMovementController characterMovementController)
     {
-        characterMovementController.SetMovementSpeedToSlow();
+        //characterMovementController.SetMovementSpeedToSlow();
     }
 }

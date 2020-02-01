@@ -29,7 +29,7 @@ public class ItemController : MonoBehaviour
     {
         if(currentEffectItem != null)
         {
-            currentEffectItem.Use();
+            //currentEffectItem.Use();
             currentEffectItem = null;
         }
     }
