@@ -24,7 +24,7 @@ public class GlobalVariables : MonoBehaviour
     public float SLAP_STUN_DURATION =2F;
     public float SLAP_COOLDOWN_TIME = 2F;
     public float SHOOT_STUN_DURATION = 2F;
-    public Vector3 SHOOT_BASE_SCALE;
+    public Vector3 SHOOT_BASE_SCALE = new Vector3(1,1,1);
     public float SHOOT_BASE_SPEED = 2F;
     public float SHOOT_COOLDOWN_TIME = 2F;
     

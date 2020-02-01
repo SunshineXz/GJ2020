@@ -53,10 +53,7 @@ public class CharacterMovementController : MonoBehaviour
 
         if (player.GetButtonDown("Spit") || player.GetAxis("Spit") > 0)
         {
-            var canShoot = Time.time >= GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME
-                || (infiniteShoot && Time.time >= GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN);
-
-            if(canShoot)
+            if(Time.time >= shootTimer)
             {
                 anim.SetTrigger("Shoot");
                 var projectile = Instantiate(projectilePrefab, transform);
@@ -65,7 +62,10 @@ public class CharacterMovementController : MonoBehaviour
                 projectile.transform.parent = null;
                 projectile.transform.localScale = GlobalVariables.GlobalVariablesInstance.SHOOT_BASE_SCALE;
 
-                shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
+                if(infiniteShoot)
+                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN;
+                else
+                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
             }
         }
 
