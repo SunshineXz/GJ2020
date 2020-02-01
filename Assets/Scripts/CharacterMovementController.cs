@@ -12,9 +12,6 @@ public class CharacterMovementController : MonoBehaviour
     private bool isStunned = false;
     private float stunnedtimer;
 
-    public bool isStunned = false;
-    public float stunnedtimer;
-
     public float movementSpeed = 4.0f;
     public float NORMAL_MOVEMENT_SPEED = 10.0f;
     public float rotationSpeed = 0.05f;
