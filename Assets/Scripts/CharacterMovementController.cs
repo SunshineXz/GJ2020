@@ -7,6 +7,7 @@ public class CharacterMovementController : MonoBehaviour
 {
     public bool canMove = true;
     private CharacterController controller;
+    private Animator anim;
 
     //Prefab
     public GameObject projectilePrefab;
@@ -38,6 +39,7 @@ public class CharacterMovementController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
         bitchSlapCollider.SetActive(false);
     }
 
@@ -52,6 +54,7 @@ public class CharacterMovementController : MonoBehaviour
 
             if(canShoot)
             {
+                anim.SetTrigger("Shoot");
                 var projectile = Instantiate(projectilePrefab, transform);
 
                 projectile.GetComponent<SpitController>().shooter = gameObject;
