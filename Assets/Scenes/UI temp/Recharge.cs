@@ -8,7 +8,7 @@ public class Recharge : MonoBehaviour
 
     private Ready ready;
     private Image knobImage;
-    private void Awake()
+    public void Awake()
     {
         knobImage = transform.Find("knob").GetComponent<Image>();
 
