@@ -104,7 +104,7 @@ public class CharacterMovementController : MonoBehaviour
             if(!shieldUp)
             {
                 // STUN THIS BITCH
-                StunPlayer();
+                StunPlayer(GlobalVariables.GlobalVariablesInstance.SHOOT_STUN_DURATION);
             }
         }
     }
@@ -156,13 +156,13 @@ public class CharacterMovementController : MonoBehaviour
 
     public void ReceiveBitchSlap()
     {
-        StunPlayer();
+        StunPlayer(GlobalVariables.GlobalVariablesInstance.SLAP_STUN_DURATION);
     }
 
-    public void StunPlayer()
+    public void StunPlayer(float duration)
     {
         isStunned = true;
-        stunnedtimer = Time.time + stunTime;
+        stunnedtimer = Time.time + duration;
     }
 
     IEnumerator WaitToSlap()
