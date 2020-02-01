@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PartsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool[] isFull;
+    public GameObject[] PartsSlot;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

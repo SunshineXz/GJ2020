@@ -114,46 +114,49 @@ public class CharacterMovementController : MonoBehaviour
         }
     }
 
-    public void SetMovementSpeed(float movementSpeedMultiplier, float time)
+    public void SetMovementSpeedBoost(float movementSpeedMultiplier, float time, GameObject itemToDestroy)
     {
         movementSpeed *= movementSpeedMultiplier;
         boostParticleSystem.Play();
-        StartCoroutine(ResetMovementSpeed(time));
+        StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
     }
 
-    private IEnumerator ResetMovementSpeed(float time)
+    private IEnumerator ResetMovementSpeed(float time, GameObject itemToDestroy)
     {
         yield return new WaitForSeconds(time);
         movementSpeed = NORMAL_MOVEMENT_SPEED;
         boostParticleSystem.Stop();
+        Destroy(itemToDestroy);
     }
 
-    public void SetShieldUp(float time)
+    public void SetShieldUp(float time, GameObject itemToDestroy)
     {
         shieldUp = true;
         shieldObject.SetActive(true);
-        StartCoroutine(ShieldDown(time));
+        StartCoroutine(ShieldDown(time, itemToDestroy));
     }
 
-    private IEnumerator ShieldDown(float time)
+    private IEnumerator ShieldDown(float time, GameObject itemToDestroy)
     {
         yield return new WaitForSeconds(time);
         shieldUp = false;
         shieldObject.SetActive(false);
+        Destroy(itemToDestroy);
     }
 
-    public void SetInfiniteShoot(float time)
+    public void SetInfiniteShoot(float time, GameObject itemToDestroy)
     {
         infiniteShoot = true;
         infiniteShootParticleSystem.Play();
-        StartCoroutine(InfiniteShootDown(time));
+        StartCoroutine(InfiniteShootDown(time, itemToDestroy));
     }
 
-    private IEnumerator InfiniteShootDown(float time)
+    private IEnumerator InfiniteShootDown(float time, GameObject itemToDestroy)
     {
         yield return new WaitForSeconds(time);
         infiniteShoot = false;
         infiniteShootParticleSystem.Stop();
+        Destroy(itemToDestroy);
     }
 
     public void ReceiveBitchSlap()
