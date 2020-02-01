@@ -23,7 +23,7 @@ public class SpitController : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         // Check if it's not himself
-        if(!collider.CompareTag("Player") && shooter != collider.gameObject)
+        if(shooter != collider.gameObject)
             Destroy(gameObject);
     }
 

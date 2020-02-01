@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rewired;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class CharacterMovementController : MonoBehaviour
     public bool canMove = true;
     private CharacterController controller;
     private Animator anim;
+    private Player player;
 
     //Prefab
     public GameObject projectilePrefab;
@@ -30,8 +32,7 @@ public class CharacterMovementController : MonoBehaviour
     public float shootCooldown = 2.0f;
 
     //Movement
-    public InputManager inputManager;
-    public string playerName;
+    public int playerID;
     public float movementSpeed = 4.0f;
     public float NORMAL_MOVEMENT_SPEED = 10.0f;
     public float rotationSpeed = 0.05f;
@@ -42,6 +43,7 @@ public class CharacterMovementController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         bitchSlapCollider.SetActive(false);
+        player = ReInput.players.GetPlayer(playerID);
     }
 
     // Update is called once per frame
@@ -49,7 +51,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         MovePlayer();
 
-        if (inputManager.GetAxisOrButtonDown("Spit", playerName))
+        if (player.GetButtonDown("Spit") || player.GetAxis("Spit") > 0)
         {
             var canShoot = Time.time >= GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME
                 || (infiniteShoot && Time.time >= GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN);
@@ -67,7 +69,7 @@ public class CharacterMovementController : MonoBehaviour
             }
         }
 
-        if(inputManager.GetAxisOrButtonDown("BitchSlap", playerName))
+        if(player.GetButtonDown("BitchSlap") || player.GetAxis("BitchSlap") > 0)
         {
             bitchSlapCollider.SetActive(true);
             StartCoroutine(WaitToSlap());
@@ -78,8 +80,8 @@ public class CharacterMovementController : MonoBehaviour
     {
         if(!isStunned && canMove)
         {
-            float x = inputManager.GetAxis("Horizontal", playerName);
-            float y = inputManager.GetAxis("Vertical", playerName);
+            float x = player.GetAxis("Horizontal");
+            float y = player.GetAxis("Vertical");
 
             var walkMagnitude = new Vector2(x, y).SqrMagnitude();
             anim.SetFloat("Walk", walkMagnitude);
@@ -89,10 +91,13 @@ public class CharacterMovementController : MonoBehaviour
         {
             anim.SetFloat("Walk", 0.0f);
             isStunned = Time.time  <= stunnedtimer;
+
+            if (!isStunned)
+                anim.SetBool("Stunned", false);
         }
 
-        float rx = inputManager.GetAxis("HorizontalRotation", playerName);
-        float ry = inputManager.GetAxis("VerticalRotation", playerName);
+        float rx = player.GetAxis("HorizontalRotation");
+        float ry = player.GetAxis("VerticalRotation");
 
         if(rx != 0 || ry != 0)
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(rx, 0, ry) * Time.deltaTime, transform.up), rotationSpeed);
@@ -165,6 +170,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         isStunned = true;
         stunnedtimer = Time.time + duration;
+        anim.SetBool("Stunned", true);
     }
 
     IEnumerator WaitToSlap()
