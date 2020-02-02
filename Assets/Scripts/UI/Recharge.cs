@@ -5,47 +5,60 @@ using UnityEngine.UI;
 
 public class Recharge : MonoBehaviour
 {
-
     private Ready ready;
     private Image knobImage;
+
     public void Awake()
     {
         knobImage = transform.Find("knob").GetComponent<Image>();
-
-        ready = new Ready();
-
     }
 
     private void Update()
     {
-        ready.Update();
+        if (ready != null)
+        {
+            ready.Update();
+            knobImage.fillAmount = ready.GetReadyNormalized();
+        }
+    }
 
-        knobImage.fillAmount = ready.GetReadyNormalized();
+    public void PutOnCooldown(float cooldown)
+    {
+        ready = new Ready(cooldown);
+        ready.PutOnCooldown();
     }
 }
 
 public class Ready
 {
-    public const int READY_MAX = 100;
+    private float cooldownDuration = 5f;
+    private float nextReadyTime;
+    private float cooldownTimeLeft;
 
-    private float readyAmount;
-    private float readyRegenAmount;
-
-    public Ready()
+    public Ready(float cooldown)
     {
-        readyAmount = 0;
-        readyRegenAmount = 20f;
+        cooldownDuration = cooldown;
     }
 
     public void Update()
     {
-        readyAmount += readyRegenAmount * Time.deltaTime;
-        readyAmount = Mathf.Clamp(readyAmount, 0f, READY_MAX);
+        bool cooldownComplete = (Time.time > nextReadyTime);
+        if (!cooldownComplete)
+        {
+            cooldownTimeLeft -= Time.deltaTime;
+            float roundedCd = Mathf.Round(cooldownTimeLeft);
+        }
     }
 
     public float GetReadyNormalized ()
-        {
-            return readyAmount / READY_MAX;
-        }
+    {
+        return 1.01f - cooldownTimeLeft / cooldownDuration;
+    }
+
+    public void PutOnCooldown()
+    {
+        nextReadyTime = cooldownDuration + Time.time;
+        cooldownTimeLeft = cooldownDuration;
+    }
 
 }

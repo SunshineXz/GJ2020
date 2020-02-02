@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
 {
     public RepairItem currentRepairItem;
     public EffectItem currentEffectItem;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public ItemRecharge itemRecharge;
+    public Image repairImage;
 
     // Update is called once per frame
     void Update()
@@ -23,6 +22,7 @@ public class ItemController : MonoBehaviour
         {
             UseItem();
         }
+        repairImage.enabled = repairImage.sprite != null;
     }
 
     private void UseItem()
@@ -40,6 +40,7 @@ public class ItemController : MonoBehaviour
         if(canPickUp)
         {
             currentRepairItem = item;
+            repairImage.sprite = item.sprite;
         }
         return canPickUp;
     }
@@ -47,6 +48,7 @@ public class ItemController : MonoBehaviour
     public void PickUpEffectItem(EffectItem item)
     {
         currentEffectItem = item;
+        itemRecharge.SetItem(item);
     }
 
     public void DropRepairItem()
@@ -56,6 +58,7 @@ public class ItemController : MonoBehaviour
             currentRepairItem.transform.position = transform.position - transform.forward * 5;
             currentRepairItem.gameObject.SetActive(true);
             currentRepairItem.SetColliderActive(true);
+            repairImage.sprite = null;
             currentRepairItem = null;
         }
     }
