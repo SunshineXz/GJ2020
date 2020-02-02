@@ -143,6 +143,7 @@ public class CharacterMovementController : MonoBehaviour
         movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED;
         boostParticleSystem.Stop();
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void SetShieldUp(float time, GameObject itemToDestroy)
@@ -159,6 +160,7 @@ public class CharacterMovementController : MonoBehaviour
         shieldUp = false;
         shieldObject.SetActive(false);
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void SetInfiniteShoot(float time, GameObject itemToDestroy)
@@ -175,6 +177,7 @@ public class CharacterMovementController : MonoBehaviour
         infiniteShoot = false;
         infiniteShootParticleSystem.Stop();
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void ReceiveBitchSlap()
