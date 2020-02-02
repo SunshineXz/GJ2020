@@ -3,7 +3,12 @@ guid: 3fa11599ba07aab498ab3e2423303bb8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_small_obstacle
+    second: {fileID: 2100000, guid: 450fdca7370d9454faa7712cdb5ee185, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
