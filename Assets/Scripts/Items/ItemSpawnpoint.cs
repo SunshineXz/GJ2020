@@ -12,6 +12,7 @@ public class ItemSpawnpoint : MonoBehaviour
 
     public float baseWaitItem = 1.0f;
     public float maxExtraWait = 5.0f;
+    public int seed;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class ItemSpawnpoint : MonoBehaviour
 
     private IEnumerator SetRandomItem()
     {
-        Random random = new Random();
+        Random random = new Random(seed);
         //wait from 5 to 10 seconds
         yield return new WaitForSeconds(random.Next((int)Mathf.Round(maxExtraWait * 10)) / 10.0f + baseWaitItem);
         var index = random.Next(items.Count);
