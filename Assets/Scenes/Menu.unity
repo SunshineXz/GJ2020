@@ -1910,16 +1910,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256157658}
   m_CullTransparentMesh: 0
+--- !u!1 &260284001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5531347522723720223, guid: 4e0a9ad066a914ab2bfe2327afc36522,
+    type: 3}
+  m_PrefabInstance: {fileID: 5531347522547397246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &260284002 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5531347522723720220, guid: 4e0a9ad066a914ab2bfe2327afc36522,
     type: 3}
   m_PrefabInstance: {fileID: 5531347522547397246}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 260284001}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8bbe0f202a584814a72ba5ae9ba561e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &260284004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260284001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2add54f450ade45b382414099db33752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &278890143
@@ -2622,7 +2640,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1014620392}
   - component: {fileID: 1014620393}
-  - component: {fileID: 1014620394}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2695,14 +2712,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 1208203472}
   m_HandleRect: {fileID: 100908761}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1014620394}
+      - m_Target: {fileID: 260284004}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
@@ -2713,19 +2730,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1014620394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014620391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2add54f450ade45b382414099db33752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 652eca14dc9da4c57a668a8bc20f44f5, type: 2}
 --- !u!1 &1192287329
 GameObject:
   m_ObjectHideFlags: 0
