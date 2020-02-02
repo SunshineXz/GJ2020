@@ -1220,6 +1220,8 @@ GameObject:
   - component: {fileID: 5117854208671198798}
   - component: {fileID: 2993845402861634356}
   - component: {fileID: 1087738907083823537}
+  - component: {fileID: 5765922541709324582}
+  - component: {fileID: 1628009581730268579}
   m_Layer: 0
   m_Name: geo_core
   m_TagString: Untagged
@@ -1298,6 +1300,33 @@ MonoBehaviour:
   - {fileID: 1946616842919708401}
   - {fileID: 6940887811069422774}
   - {fileID: 1788325720863887719}
+  owner: {fileID: 0}
+--- !u!65 &5765922541709324582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168716709952445533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 10, z: 15}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1628009581730268579
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168716709952445533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.01
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8881243704913062939
 GameObject:
   m_ObjectHideFlags: 0

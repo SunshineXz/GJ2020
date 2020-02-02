@@ -113,10 +113,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_1231: {r: 0.773, g: 0.438291, b: 0.69490117, a: 1}
-    - Color_134B029B: {r: 0.29854116, g: 0.624, b: 0.44047058, a: 1}
+    - Color_134B029B: {r: 0.28439835, g: 0.7264151, b: 0.47611645, a: 1}
     - Color_24196313: {r: 0.22745098, g: 1.1137255, b: 0.6117647, a: 1}
     - Color_8AFE1D0D: {r: 0.78, g: 0.2769, b: 0.6278999, a: 0}
     - Color_8AFE1D0Dser: {r: 0, g: 0, b: 0, a: 0}
+    - Emissive_core: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
