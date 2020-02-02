@@ -22,7 +22,8 @@ public class ItemController : MonoBehaviour
         {
             UseItem();
         }
-        repairImage.enabled = repairImage.sprite != null;
+        if(repairImage != null)
+            repairImage.enabled = repairImage.sprite != null;
     }
 
     private void UseItem()
