@@ -15,8 +15,6 @@ public class CorePartController : MonoBehaviour
         GetComponent<Renderer>().material = new Material(GetComponent<Renderer>().material);
 
         m = GetComponent<Renderer>().material;
-        // set it transparent at the begining
-        m.SetFloat("Alpha", 0);
     }
 
     // Update is called once per frame
@@ -24,13 +22,18 @@ public class CorePartController : MonoBehaviour
     {
         if(isSpawning)
         {
-            m.SetFloat("Alpha", m.GetFloat("Alpha") + Time.deltaTime);
-            isSpawning = m.GetFloat("Alpha") < 1;
+            GetComponent<Renderer>().material.SetFloat("Alpha_core", GetComponent<Renderer>().material.GetFloat("Alpha_core") + Time.deltaTime);
+            isSpawning = GetComponent<Renderer>().material.GetFloat("Alpha_core") < 1;
         }
     }
 
     public void SpawnItem()
     {
         isSpawning = true;
+    }
+
+    public void SetAlphaToZero()
+    {
+        m.SetFloat("Alpha_core", 0);
     }
 }
