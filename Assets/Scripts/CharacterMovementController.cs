@@ -22,6 +22,7 @@ public class CharacterMovementController : MonoBehaviour
     public ItemRecharge itemRecharge;
     public Recharge recharge;
     public ParticleSystem stunParticleSystem;
+    public ParticleSystem slamParticleSystem;
 
     //Stun
     private bool isStunned = false;
@@ -94,6 +95,11 @@ public class CharacterMovementController : MonoBehaviour
                 stunCooldown = Time.time + GlobalVariables.GlobalVariablesInstance.SLAP_COOLDOWN_TIME;
             }
         }
+    }
+
+    public void LateUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     private void MovePlayer()
@@ -208,7 +214,9 @@ public class CharacterMovementController : MonoBehaviour
     {
         //if no protection -> stunned
         if (!shieldUp)
+        {
             StunPlayer(GlobalVariables.GlobalVariablesInstance.SLAP_STUN_DURATION);
+        }
     }
 
     public void StunPlayer(float duration)
@@ -224,6 +232,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         stunParticleSystem.Play();
+        slamParticleSystem.Play();
     }
 
     IEnumerator WaitToStunOnSlap()
