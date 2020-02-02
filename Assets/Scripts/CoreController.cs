@@ -13,14 +13,12 @@ public class CoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        coreParts.ForEach(x => x.GetComponent<CorePartController>().SetAlphaToZero());
     }
 
     // Update is called once per frame
     void Update()
     {
-        // For now
-        //transform.Rotate(rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime, 0);
-
         if (Input.GetKeyDown(KeyCode.B))
             AddObject();
     }
@@ -29,6 +27,9 @@ public class CoreController : MonoBehaviour
     {
         if(coreParts.Count > currentIndex)
         {
+            // 2 at the same time.
+            coreParts[currentIndex].GetComponent<CorePartController>().SpawnItem();
+            currentIndex++;
             coreParts[currentIndex].GetComponent<CorePartController>().SpawnItem();
             currentIndex++;
         }
