@@ -17,7 +17,7 @@ public class CharacterMovementController : MonoBehaviour
     public GameObject bitchSlapCollider;
 
     //Objects
-    public GameObject shieldObject;
+    public ParticleSystem shieldObject;
     public ParticleSystem infiniteShootParticleSystem;
     public ParticleSystem boostParticleSystem;
     public ItemRecharge itemRecharge;
@@ -154,6 +154,7 @@ public class CharacterMovementController : MonoBehaviour
             if(!shieldUp)
             {
                 SetMovementSpeed(GlobalVariables.GlobalVariablesInstance.SLOW_SPEED_MULTIPLIER, GlobalVariables.GlobalVariablesInstance.SLOW_TIME);
+                FindObjectOfType<AudioManager>().Play("Damage");
             }
         }
     }
@@ -193,16 +194,17 @@ public class CharacterMovementController : MonoBehaviour
     public void SetShieldUp(float time, GameObject itemToDestroy)
     {
         shieldUp = true;
-        shieldObject.SetActive(true);
+        shieldObject.Play();
         itemRecharge.PutOnCooldown(time);
         StartCoroutine(ShieldDown(time, itemToDestroy));
+        FindObjectOfType<AudioManager>().Play("Shield");
     }
 
     private IEnumerator ShieldDown(float time, GameObject itemToDestroy)
     {
         yield return new WaitForSeconds(time);
         shieldUp = false;
-        shieldObject.SetActive(false);
+        shieldObject.Stop();
         Destroy(itemToDestroy);
         GetComponent<ItemController>().currentEffectItem = null;
     }

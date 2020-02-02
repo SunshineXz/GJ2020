@@ -18,6 +18,7 @@ public class PlayerBase : MonoBehaviour
                 Destroy(controller.currentRepairItem.gameObject);
                 controller.repairImage.sprite = null;
                 controller.currentRepairItem = null;
+                FindObjectOfType<AudioManager>().Play("Place");
             }
         }
     }
