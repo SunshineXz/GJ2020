@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpitController : MonoBehaviour
 {
+    public ParticleSystem spitLoop;
+    public ParticleSystem spitImpact;
     public float speed = 1.0f;
     public GameObject shooter;
     public float shootingTime = 5.0f;
@@ -11,7 +13,7 @@ public class SpitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DestroyProjectile());
+        StartCoroutine(DestroyProjectile(shootingTime));
     }
 
     // Update is called once per frame
@@ -24,12 +26,16 @@ public class SpitController : MonoBehaviour
     {
         // Check if it's not himself
         if(shooter != collider.gameObject)
-            Destroy(gameObject);
+        {
+            spitLoop.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            spitImpact.Play();
+            StartCoroutine(DestroyProjectile(1));
+        }
     }
 
-    IEnumerator DestroyProjectile()
+    IEnumerator DestroyProjectile(float time )
     {
-        yield return new WaitForSeconds(shootingTime);
+        yield return new WaitForSeconds(time);
 
         Destroy(gameObject);
     }
