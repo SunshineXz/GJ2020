@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             player2ScoreDisplay.UpdateScore();
             CheckForWin(playerId, player2Score);
         }
-        SpawnRepairItem();
+        StartCoroutine(SpawnRepairItem());
     }
 
     public void CheckForWin(int playerId, int playerScore)
