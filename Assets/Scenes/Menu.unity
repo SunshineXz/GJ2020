@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3026,6 +3026,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512351762}
   m_CullTransparentMesh: 0
+--- !u!1 &1516086778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516086779}
+  - component: {fileID: 1516086780}
+  - component: {fileID: 1516086781}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516086779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516086778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -47.635883, y: 59.93853, z: -4.504711}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1516086780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516086778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e56cf3e62cd4ed48a56bc3ba27f304c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Score: 0
+  player2Score: 0
+  player1ScoreDisplay: {fileID: 0}
+  player2ScoreDisplay: {fileID: 0}
+  scoreToWin: 5
+  repairSpawnPoints: []
+--- !u!114 &1516086781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516086778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156fb0fbb3c10c94eb9309f58dc4b110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PLAYER_MOVEMENT_SPEED: 15
+  SLAP_STUN_DURATION: 1
+  SLAP_COOLDOWN_TIME: 2
+  SHOOT_STUN_DURATION: 2
+  SHOOT_BASE_SCALE: {x: 1, y: 1, z: 1}
+  SHOOT_BASE_SPEED: 2.5
+  SHOOT_COOLDOWN_TIME: 2
+  SLOW_SPEED_MULTIPLIER: 0.25
+  SLOW_TIME: 0.5
+  SPEED_UP_MOVEMENT_BONUS: 1.5
+  SPEED_UP_DURATION: 3
+  ATTACK_UP_SIZE: 2
+  ATTACK_UP_SPEED_BONUS: 2
+  ATTACK_UP_STUN_DURATION: 2
+  DEFENSE_UP_DURATION: 2
+  BULLET_TIME_DURATION: 5
+  BULLET_TIME_REDUCED_COOLDOWN: 0.5
 --- !u!1 &1628898048
 GameObject:
   m_ObjectHideFlags: 0

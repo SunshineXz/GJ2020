@@ -93,8 +93,20 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Arena
-    clip: {fileID: 8300000, guid: a796938f08f924ef4805f3914aa02e9a, type: 3}
+  - name: Bounce
+    clip: {fileID: 8300000, guid: 3db33751844834e468f3798afb4d84b2, type: 3}
+    volume: 0.44
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Place
+    clip: {fileID: 8300000, guid: f35886a8ba68f4fa59b66cd2dc199c18, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: 2caf21617ad62444e894e8d1ea2a6d27, type: 3}
     volume: 1
     pitch: 1
     loop: 0
