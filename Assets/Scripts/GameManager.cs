@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,7 +64,13 @@ public class GameManager : MonoBehaviour
         if(playerScore >= scoreToWin)
         {
             Debug.Log($"Player {playerId + 1} wins!");
-            //Load VictoryScene
+            StartCoroutine(WaitForVictorySequence());
         }
+    }
+
+    private IEnumerator WaitForVictorySequence()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(2);
     }
 }

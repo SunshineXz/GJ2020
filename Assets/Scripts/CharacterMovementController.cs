@@ -67,6 +67,8 @@ public class CharacterMovementController : MonoBehaviour
             {
                 anim.SetTrigger("Shoot");
 
+                FindObjectOfType<AudioManager>().Play("Spit");
+
                 var projectile = Instantiate(projectilePrefab, transform);
 
                 projectile.GetComponent<SpitController>().shooter = gameObject;
@@ -85,6 +87,7 @@ public class CharacterMovementController : MonoBehaviour
                 shootTimer = Time.time + cooldown;
                 recharge.PutOnCooldown(cooldown);
             }
+
         }
 
         if(player.GetButtonDown("BitchSlap") || player.GetAxis("BitchSlap") > 0)
@@ -95,7 +98,10 @@ public class CharacterMovementController : MonoBehaviour
                 StartCoroutine(WaitToStunOnSlap());
                 StartCoroutine(WaitToFinishSlap());
                 stunCooldown = Time.time + GlobalVariables.GlobalVariablesInstance.SLAP_COOLDOWN_TIME;
+                FindObjectOfType<AudioManager>().Play("Attack");
             }
+
+        
         }
     }
 
@@ -158,6 +164,7 @@ public class CharacterMovementController : MonoBehaviour
         boostParticleSystem.Play();
         itemRecharge.PutOnCooldown(time);
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
+        FindObjectOfType<AudioManager>().Play("Boost");
     }
 
     public void SetMovementSpeed(float multiplier, float time)
@@ -233,6 +240,7 @@ public class CharacterMovementController : MonoBehaviour
 
         StartCoroutine(WaitToStartStunParticleSystem());
         anim.SetBool("Stunned", true);
+        FindObjectOfType<AudioManager>().Play("Slapped");
     }
 
     IEnumerator WaitToStartStunParticleSystem()
