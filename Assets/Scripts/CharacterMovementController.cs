@@ -216,8 +216,14 @@ public class CharacterMovementController : MonoBehaviour
         isStunned = true;
         stunnedtimer = Time.time + duration;
 
-        stunParticleSystem.Play();
+        StartCoroutine(WaitToStartStunParticleSystem());
         anim.SetBool("Stunned", true);
+    }
+
+    IEnumerator WaitToStartStunParticleSystem()
+    {
+        yield return new WaitForSeconds(0.1f);
+        stunParticleSystem.Play();
     }
 
     IEnumerator WaitToStunOnSlap()
