@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d862b1dd5d07841a3946db41fd3d9826
   - enabled: 1
-    path: Assets/Scenes/TestingArena.unity
-    guid: b9cb9e9e77760864c81272545bad9814
+    path: Assets/Scenes/BattleArena 1.unity
+    guid: 4e3da3b0bc14b434b931f2e4268bad09
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 16e8f04fcee08614fa97e1fe9c45e4a7
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/TestingArena.unity
+    guid: b9cb9e9e77760864c81272545bad9814
+  - enabled: 0
     path: Assets/Scenes/BattleArena.unity
     guid: da4c493342dba594aa15dfbf9842b574
   m_configObjects: {}
