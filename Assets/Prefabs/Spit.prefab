@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spitLoop: {fileID: 1185772325090951663}
   spitImpact: {fileID: 5025389234854479293}
-  speed: 50
+  speed: 100
   shooter: {fileID: 0}
   shootingTime: 5
 --- !u!1001 &5995938810966649746

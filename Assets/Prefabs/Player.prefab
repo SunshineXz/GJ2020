@@ -5216,8 +5216,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717716272103431807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.01, z: 3.5}
-  m_LocalScale: {x: 2, y: 1, z: 4}
+  m_LocalPosition: {x: 0, y: 1.01, z: 5}
+  m_LocalScale: {x: 2, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 717716272539730291}
   m_RootOrder: 3
@@ -10301,6 +10301,8 @@ MonoBehaviour:
   shieldObject: {fileID: 717716272785014254}
   infiniteShootParticleSystem: {fileID: 717716272159538144}
   boostParticleSystem: {fileID: 717716271972695063}
+  itemRecharge: {fileID: 0}
+  recharge: {fileID: 0}
   stunParticleSystem: {fileID: 6886458024914066922}
   shieldUp: 0
   stunCooldown: 0
@@ -10340,6 +10342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRepairItem: {fileID: 0}
   currentEffectItem: {fileID: 0}
+  itemRecharge: {fileID: 0}
+  repairImage: {fileID: 0}
 --- !u!1 &717716272567253618
 GameObject:
   m_ObjectHideFlags: 0
