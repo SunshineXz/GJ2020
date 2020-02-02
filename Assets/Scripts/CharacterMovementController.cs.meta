@@ -3,7 +3,16 @@ guid: 49cc45b7fe02d5c4fa0800181b753ba7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - projectilePrefab: {instanceID: 0}
+  - bitchSlapCollider: {instanceID: 0}
+  - shieldObject: {instanceID: 0}
+  - infiniteShootParticleSystem: {instanceID: 0}
+  - boostParticleSystem: {instanceID: 0}
+  - itemRecharge: {instanceID: 0}
+  - recharge: {instanceID: 0}
+  - stunParticleSystem: {instanceID: 0}
+  - slamParticleSystem: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
