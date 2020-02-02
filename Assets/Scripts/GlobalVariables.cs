@@ -19,7 +19,7 @@ public class GlobalVariables : MonoBehaviour
         }
     }
 
-    public float PLAYER_MOVEMENT_SPEED = 10F;
+    public float PLAYER_MOVEMENT_SPEED = 15F;
 
     public float SLAP_STUN_DURATION =1F;
     public float SLAP_COOLDOWN_TIME = 2F;
@@ -30,12 +30,12 @@ public class GlobalVariables : MonoBehaviour
     public float SLOW_SPEED_MULTIPLIER = 0.25F;
     public float SLOW_TIME = 0.5F;
     
-    public float SPEED_UP_MOVEMENT_BONUS = 1.1F;
+    public float SPEED_UP_MOVEMENT_BONUS = 1.5F;
     public float SPEED_UP_DURATION = 3F;
     public int ATTACK_UP_SIZE = 2;
     public float ATTACK_UP_SPEED_BONUS = 2F;
     public float ATTACK_UP_STUN_DURATION = 2F;
     public float DEFENSE_UP_DURATION = 2F;
     public float BULLET_TIME_DURATION = 5F;
-    public float BULLET_TIME_REDUCED_COOLDOWN = 1F;
+    public float BULLET_TIME_REDUCED_COOLDOWN = 0.5F;
 }

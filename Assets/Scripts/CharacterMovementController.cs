@@ -10,6 +10,7 @@ public class CharacterMovementController : MonoBehaviour
     private CharacterController controller;
     private Animator anim;
     private Player player;
+    private Rigidbody rb;
 
     //Prefab
     public GameObject projectilePrefab;
@@ -36,10 +37,10 @@ public class CharacterMovementController : MonoBehaviour
 
     //Movement
     public int playerID;
-    public float movementSpeed = 4.0f;
-    public float NORMAL_MOVEMENT_SPEED = 10.0f;
+    public float movementSpeed = 15.0f;
+    public float NORMAL_MOVEMENT_SPEED = 15.0f;
     public float rotationSpeed = 0.5f;
-    private bool canSlap = true;
+    private Quaternion rotation;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class CharacterMovementController : MonoBehaviour
         anim = GetComponent<Animator>();
         bitchSlapCollider.SetActive(false);
         player = ReInput.players.GetPlayer(playerID);
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -100,6 +102,7 @@ public class CharacterMovementController : MonoBehaviour
     public void LateUpdate()
     {
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        transform.rotation = rotation;
     }
 
     private void MovePlayer()
@@ -129,17 +132,21 @@ public class CharacterMovementController : MonoBehaviour
         float ry = player.GetAxis("VerticalRotation");
 
         if(rx != 0 || ry != 0)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(rx, 0, ry) * Time.deltaTime, transform.up), rotationSpeed);
+        {
+            rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(rx, 0, ry) * Time.deltaTime, transform.up), rotationSpeed);
+        }
+        else
+        {
+            rotation = transform.rotation;
+        }
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
         {
-            //if no protection -> slowed
             if(!shieldUp)
             {
-                // SLOW THIS BITCH
                 SetMovementSpeed(GlobalVariables.GlobalVariablesInstance.SLOW_SPEED_MULTIPLIER, GlobalVariables.GlobalVariablesInstance.SLOW_TIME);
             }
         }
@@ -147,7 +154,7 @@ public class CharacterMovementController : MonoBehaviour
 
     public void SetMovementSpeedBoost(float movementSpeedMultiplier, float time, GameObject itemToDestroy)
     {
-        movementSpeed *= movementSpeedMultiplier;
+        movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED * movementSpeedMultiplier;
         boostParticleSystem.Play();
         itemRecharge.PutOnCooldown(time);
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
@@ -155,8 +162,8 @@ public class CharacterMovementController : MonoBehaviour
 
     public void SetMovementSpeed(float multiplier, float time)
     {
-        movementSpeed *= multiplier;
-        anim.speed *= (multiplier / 2);
+        movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED * multiplier;
+        anim.speed = (multiplier / 2);
         StartCoroutine(ResetMovementSpeed(time));
     }
 
