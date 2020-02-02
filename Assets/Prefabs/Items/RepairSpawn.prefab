@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5946578793574376198}
   - component: {fileID: 5946578793574376199}
   - component: {fileID: 5946578793574376192}
-  - component: {fileID: 5946578793574376194}
   - component: {fileID: 5946578793574376193}
   - component: {fileID: 6681442466725130898}
   m_Layer: 0
@@ -50,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946578793574376195}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -82,24 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5946578793574376194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946578793574376195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45203c11d69c66e4e986e4233a5442cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRepair: 0
-  items:
-  - {fileID: 6932064661168628342, guid: e3d42f03efcdbe043bec336bba662ac3, type: 3}
-  currentItem: {fileID: 0}
-  baseWaitItem: 1
-  maxExtraWait: 5
 --- !u!65 &5946578793574376193
 BoxCollider:
   m_ObjectHideFlags: 0

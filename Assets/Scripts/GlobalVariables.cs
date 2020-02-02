@@ -30,8 +30,8 @@ public class GlobalVariables : MonoBehaviour
     public float SLOW_SPEED_MULTIPLIER = 0.25F;
     public float SLOW_TIME = 0.5F;
     
-    public float SPEED_UP_MOVEMENT_BONUS = 2F;
-    public float SPEED_UP_DURATION = 2F;
+    public float SPEED_UP_MOVEMENT_BONUS = 1.1F;
+    public float SPEED_UP_DURATION = 3F;
     public int ATTACK_UP_SIZE = 2;
     public float ATTACK_UP_SPEED_BONUS = 2F;
     public float ATTACK_UP_STUN_DURATION = 2F;

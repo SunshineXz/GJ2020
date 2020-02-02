@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public int player1Score = 0;
     public int player2Score = 0;
+    public ScoreDisplay player1ScoreDisplay;
+    public ScoreDisplay player2ScoreDisplay;
     public int scoreToWin = 5;
+
     public List<RepairSpawnPoint> repairSpawnPoints;
 
     static GameManager instance;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -42,11 +46,13 @@ public class GameManager : MonoBehaviour
         if(playerId == 0)
         {
             player1Score++;
+            player1ScoreDisplay.UpdateScore();
             CheckForWin(playerId, player1Score);
         }
         else if(playerId == 1)
         {
             player2Score++;
+            player2ScoreDisplay.UpdateScore();
             CheckForWin(playerId, player2Score);
         }
         SpawnRepairItem();
@@ -57,6 +63,7 @@ public class GameManager : MonoBehaviour
         if(playerScore >= scoreToWin)
         {
             Debug.Log($"Player {playerId + 1} wins!");
+            //Load VictoryScene
         }
     }
 }

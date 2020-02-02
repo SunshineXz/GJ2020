@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621116091986893389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -109,9 +109,8 @@ MonoBehaviour:
   isRepair: 0
   items:
   - {fileID: 8139603301924347623, guid: 378456cee640b9348a8f6f6dfbb1754d, type: 3}
-  - {fileID: 6932064661168628342, guid: e3d42f03efcdbe043bec336bba662ac3, type: 3}
-  - {fileID: 4233592581374940608, guid: 32a5d0bc440d926479ddc605e6998c5b, type: 3}
   - {fileID: 8757956000570464064, guid: be4fca186f0c569439bee8573d184ec2, type: 3}
+  - {fileID: 4233592581374940608, guid: 32a5d0bc440d926479ddc605e6998c5b, type: 3}
   currentItem: {fileID: 0}
   baseWaitItem: 1
   maxExtraWait: 5
