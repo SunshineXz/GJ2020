@@ -30,7 +30,6 @@ public class ItemController : MonoBehaviour
         if(currentEffectItem != null)
         {
             currentEffectItem.Use(GetComponent<CharacterMovementController>());
-            currentEffectItem = null;
         }
     }
 
