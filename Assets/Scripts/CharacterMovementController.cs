@@ -19,6 +19,8 @@ public class CharacterMovementController : MonoBehaviour
     public GameObject shieldObject;
     public ParticleSystem infiniteShootParticleSystem;
     public ParticleSystem boostParticleSystem;
+    public ItemRecharge itemRecharge;
+    public Recharge recharge;
     public ParticleSystem stunParticleSystem;
 
     //Stun
@@ -61,16 +63,24 @@ public class CharacterMovementController : MonoBehaviour
             if(Time.time >= shootTimer)
             {
                 anim.SetTrigger("Shoot");
+
                 var projectile = Instantiate(projectilePrefab, transform);
 
                 projectile.GetComponent<SpitController>().shooter = gameObject;
                 projectile.transform.parent = null;
                 projectile.transform.localScale = GlobalVariables.GlobalVariablesInstance.SHOOT_BASE_SCALE;
 
+                var cooldown = 0.0f;
                 if(infiniteShoot)
-                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN;
+                {
+                    cooldown = GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN;
+                }
                 else
-                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
+                {
+                    cooldown = GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
+                }
+                shootTimer = Time.time + cooldown;
+                recharge.PutOnCooldown(cooldown);
             }
         }
 
@@ -133,6 +143,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         movementSpeed *= movementSpeedMultiplier;
         boostParticleSystem.Play();
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
     }
 
@@ -156,12 +167,14 @@ public class CharacterMovementController : MonoBehaviour
         movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED;
         boostParticleSystem.Stop();
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void SetShieldUp(float time, GameObject itemToDestroy)
     {
         shieldUp = true;
         shieldObject.SetActive(true);
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(ShieldDown(time, itemToDestroy));
     }
 
@@ -171,12 +184,14 @@ public class CharacterMovementController : MonoBehaviour
         shieldUp = false;
         shieldObject.SetActive(false);
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void SetInfiniteShoot(float time, GameObject itemToDestroy)
     {
         infiniteShoot = true;
         infiniteShootParticleSystem.Play();
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(InfiniteShootDown(time, itemToDestroy));
     }
 
@@ -186,6 +201,7 @@ public class CharacterMovementController : MonoBehaviour
         infiniteShoot = false;
         infiniteShootParticleSystem.Stop();
         Destroy(itemToDestroy);
+        GetComponent<ItemController>().currentEffectItem = null;
     }
 
     public void ReceiveBitchSlap()

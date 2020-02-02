@@ -22,7 +22,7 @@ public class ItemSpawnpoint : MonoBehaviour
     {
         Random random = new Random();
         //wait from 5 to 10 seconds
-        yield return new WaitForSeconds(random.Next((int)Mathf.Round(maxExtraWait * 10))/10.0f + baseWaitItem);
+        yield return new WaitForSeconds(random.Next((int)Mathf.Round(maxExtraWait * 10)) / 10.0f + baseWaitItem);
         var index = random.Next(items.Count);
         Item item = Instantiate(items[index], transform).GetComponent<Item>();
         currentItem = item;
@@ -30,7 +30,7 @@ public class ItemSpawnpoint : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && currentItem != null)
+        if (other.CompareTag("Player") && other.GetComponent<ItemController>().currentEffectItem == null && currentItem != null)
         {
             currentItem.Pickup(other.GetComponent<ItemController>());
             StartCoroutine(SetRandomItem());
