@@ -18,7 +18,7 @@ public class BitchSlapColliderController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Player"))
+        if(collider.CompareTag("Player") && collider.gameObject != gameObject.transform.parent.gameObject)
         {
             collider.gameObject.GetComponent<CharacterMovementController>().ReceiveBitchSlap();
         }

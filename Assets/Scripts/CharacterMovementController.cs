@@ -22,21 +22,21 @@ public class CharacterMovementController : MonoBehaviour
     public ParticleSystem stunParticleSystem;
 
     //Stun
-    public float stunTime = 2.0f;
     private bool isStunned = false;
     private float stunnedtimer;
     public bool shieldUp = false;
+    public float stunCooldown;
 
     //Shoot
     public bool infiniteShoot = false;
     public float shootTimer = 0.0f;
-    public float shootCooldown = 2.0f;
 
     //Movement
     public int playerID;
     public float movementSpeed = 4.0f;
     public float NORMAL_MOVEMENT_SPEED = 10.0f;
-    public float rotationSpeed = 0.05f;
+    public float rotationSpeed = 0.5f;
+    private bool canSlap = true;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,10 @@ public class CharacterMovementController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+
+        // Can't do anything dumb fuck
+        if (isStunned)
+            return;
 
         if (player.GetButtonDown("Spit") || player.GetAxis("Spit") > 0)
         {
@@ -72,8 +76,13 @@ public class CharacterMovementController : MonoBehaviour
 
         if(player.GetButtonDown("BitchSlap") || player.GetAxis("BitchSlap") > 0)
         {
-            bitchSlapCollider.SetActive(true);
-            StartCoroutine(WaitToSlap());
+            if(Time.time >= stunCooldown)
+            {
+                anim.SetTrigger("Slap");
+                StartCoroutine(WaitToStunOnSlap());
+                StartCoroutine(WaitToFinishSlap());
+                stunCooldown = Time.time + GlobalVariables.GlobalVariablesInstance.SLAP_COOLDOWN_TIME;
+            }
         }
     }
 
@@ -111,11 +120,11 @@ public class CharacterMovementController : MonoBehaviour
     {
         if(collider.CompareTag("Spit") && collider.gameObject.GetComponent<SpitController>().shooter != gameObject)
         {
-            //if no protection -> stunned
+            //if no protection -> slowed
             if(!shieldUp)
             {
-                // STUN THIS BITCH
-                StunPlayer(GlobalVariables.GlobalVariablesInstance.SHOOT_STUN_DURATION);
+                // SLOW THIS BITCH
+                SetMovementSpeed(GlobalVariables.GlobalVariablesInstance.SLOW_SPEED_MULTIPLIER, GlobalVariables.GlobalVariablesInstance.SLOW_TIME);
             }
         }
     }
@@ -125,6 +134,20 @@ public class CharacterMovementController : MonoBehaviour
         movementSpeed *= movementSpeedMultiplier;
         boostParticleSystem.Play();
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
+    }
+
+    public void SetMovementSpeed(float multiplier, float time)
+    {
+        movementSpeed *= multiplier;
+        anim.speed *= (multiplier / 2);
+        StartCoroutine(ResetMovementSpeed(time));
+    }
+
+    public IEnumerator ResetMovementSpeed(float time)
+    {
+        yield return new WaitForSeconds(time);
+        movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED;
+        anim.speed = 1;
     }
 
     private IEnumerator ResetMovementSpeed(float time, GameObject itemToDestroy)
@@ -167,7 +190,9 @@ public class CharacterMovementController : MonoBehaviour
 
     public void ReceiveBitchSlap()
     {
-        StunPlayer(GlobalVariables.GlobalVariablesInstance.SLAP_STUN_DURATION);
+        //if no protection -> stunned
+        if (!shieldUp)
+            StunPlayer(GlobalVariables.GlobalVariablesInstance.SLAP_STUN_DURATION);
     }
 
     public void StunPlayer(float duration)
@@ -179,7 +204,13 @@ public class CharacterMovementController : MonoBehaviour
         anim.SetBool("Stunned", true);
     }
 
-    IEnumerator WaitToSlap()
+    IEnumerator WaitToStunOnSlap()
+    {
+        yield return new WaitForSeconds(0.35f);
+        bitchSlapCollider.SetActive(true);
+    }
+
+    IEnumerator WaitToFinishSlap()
     {
         yield return new WaitForSeconds(0.5f);
         bitchSlapCollider.SetActive(false);
