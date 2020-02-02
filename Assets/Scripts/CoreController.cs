@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoreController : MonoBehaviour
 {
     public List<GameObject> coreParts;
+    public GameObject owner;
 
     private int currentIndex = 0;
 
@@ -32,6 +33,24 @@ public class CoreController : MonoBehaviour
             currentIndex++;
             coreParts[currentIndex].GetComponent<CorePartController>().SpawnItem();
             currentIndex++;
+        }
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject == owner)
+        {
+            var controller = collider.GetComponent<ItemController>();
+            if (controller.currentRepairItem != null)
+            {
+                GameManager.Instance.ScorePoint(collider.GetComponent<CharacterMovementController>().playerID);
+                Destroy(controller.currentRepairItem.gameObject);
+                controller.repairImage.sprite = null;
+                controller.currentRepairItem = null;
+                FindObjectOfType<AudioManager>().Play("Place");
+            }
+
+            AddObject();
         }
     }
 }
