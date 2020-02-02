@@ -100,8 +100,6 @@ public class CharacterMovementController : MonoBehaviour
                 stunCooldown = Time.time + GlobalVariables.GlobalVariablesInstance.SLAP_COOLDOWN_TIME;
                 FindObjectOfType<AudioManager>().Play("Attack");
             }
-
-        
         }
     }
 
@@ -204,7 +202,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         shieldUp = false;
-        shieldObject.Stop();
+        shieldObject.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         Destroy(itemToDestroy);
         GetComponent<ItemController>().currentEffectItem = null;
     }
