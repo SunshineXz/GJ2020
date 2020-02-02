@@ -19,7 +19,7 @@ public class CharacterMovementController : MonoBehaviour
     //Objects
     public ParticleSystem shieldObject;
     public ParticleSystem infiniteShootParticleSystem;
-    public ParticleSystem boostParticleSystem;
+    public GameObject boostParticleSystem;
     public ItemRecharge itemRecharge;
     public Recharge recharge;
     public ParticleSystem stunParticleSystem;
@@ -160,7 +160,7 @@ public class CharacterMovementController : MonoBehaviour
     public void SetMovementSpeedBoost(float movementSpeedMultiplier, float time, GameObject itemToDestroy)
     {
         movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED * movementSpeedMultiplier;
-        boostParticleSystem.Play();
+        boostParticleSystem.SetActive(true);
         itemRecharge.PutOnCooldown(time);
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
         FindObjectOfType<AudioManager>().Play("Boost");
@@ -184,7 +184,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         movementSpeed = GlobalVariables.GlobalVariablesInstance.PLAYER_MOVEMENT_SPEED;
-        boostParticleSystem.Stop();
+        boostParticleSystem.SetActive(false);
         Destroy(itemToDestroy);
         GetComponent<ItemController>().currentEffectItem = null;
     }
