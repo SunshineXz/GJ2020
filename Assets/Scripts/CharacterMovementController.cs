@@ -231,6 +231,8 @@ public class CharacterMovementController : MonoBehaviour
         {
             StunPlayer(GlobalVariables.GlobalVariablesInstance.SLAP_STUN_DURATION);
         }
+        else
+            FindObjectOfType<AudioManager>().Play("Block");
     }
 
     public void StunPlayer(float duration)
