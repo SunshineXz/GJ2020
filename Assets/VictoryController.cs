@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Rewired;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,11 @@ public class VictoryController : MonoBehaviour
         {
             Player1.GetComponent<Renderer>().material = p2Mat;
             Player2.GetComponent<Renderer>().material = p1Mat;
+        }
+        var ctrl = FindObjectsOfType<CharacterMovementController>();
+        foreach(CharacterMovementController c in ctrl)
+        {
+            c.gameObject.SetActive(false);
         }
     }
 }

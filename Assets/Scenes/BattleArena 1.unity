@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 0e669ef28ab7fe047afa892819b2b4c5,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3903,12 +3903,12 @@ PrefabInstance:
         type: 3}
       propertyPath: player1ScoreDisplay
       value: 
-      objectReference: {fileID: 773801909}
+      objectReference: {fileID: 1365687774}
     - target: {fileID: 7025954144170445835, guid: 19bb855224bc4da4fa52ecb99e54f7a3,
         type: 3}
       propertyPath: player2ScoreDisplay
       value: 
-      objectReference: {fileID: 1365687774}
+      objectReference: {fileID: 773801909}
     - target: {fileID: 7025954144170445835, guid: 19bb855224bc4da4fa52ecb99e54f7a3,
         type: 3}
       propertyPath: repairSpawnPoints.Array.data[0]
@@ -5428,12 +5428,12 @@ PrefabInstance:
         type: 3}
       propertyPath: recharge
       value: 
-      objectReference: {fileID: 144662902}
+      objectReference: {fileID: 144662899}
     - target: {fileID: 4279343664942015043, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: itemRecharge
       value: 
-      objectReference: {fileID: 144662901}
+      objectReference: {fileID: 144662898}
     - target: {fileID: 4279343664942015044, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5463,12 +5463,12 @@ PrefabInstance:
         type: 3}
       propertyPath: itemRecharge
       value: 
-      objectReference: {fileID: 144662901}
+      objectReference: {fileID: 144662898}
     - target: {fileID: 4279343664942015047, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: repairImage
       value: 
-      objectReference: {fileID: 144662900}
+      objectReference: {fileID: 144662897}
     - target: {fileID: 4496497774875039408, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: m_Name
@@ -5558,22 +5558,22 @@ PrefabInstance:
         type: 3}
       propertyPath: itemRecharge
       value: 
-      objectReference: {fileID: 144662898}
+      objectReference: {fileID: 144662901}
     - target: {fileID: 8425179402739136154, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: repairImage
       value: 
-      objectReference: {fileID: 144662897}
+      objectReference: {fileID: 144662900}
     - target: {fileID: 8425179402739136158, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: recharge
       value: 
-      objectReference: {fileID: 144662899}
+      objectReference: {fileID: 144662902}
     - target: {fileID: 8425179402739136158, guid: a8a141dcdc55d9a4ba28ca28a915f2f3,
         type: 3}
       propertyPath: itemRecharge
       value: 
-      objectReference: {fileID: 144662898}
+      objectReference: {fileID: 144662901}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8a141dcdc55d9a4ba28ca28a915f2f3, type: 3}
 --- !u!1001 &2046315791
