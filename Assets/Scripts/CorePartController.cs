@@ -22,7 +22,6 @@ public class CorePartController : MonoBehaviour
     {
         if(isSpawning)
         {
-            GetComponent<Renderer>().material.SetColor("Emissive_core", GetComponent<Renderer>().material.GetColor("Emissive_core") * 1.01f);
             GetComponent<Renderer>().material.SetFloat("Alpha_core", GetComponent<Renderer>().material.GetFloat("Alpha_core") + Time.deltaTime);
             isSpawning = GetComponent<Renderer>().material.GetFloat("Alpha_core") < 1;
         }

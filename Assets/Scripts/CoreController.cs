@@ -48,9 +48,9 @@ public class CoreController : MonoBehaviour
                 controller.repairImage.sprite = null;
                 controller.currentRepairItem = null;
                 FindObjectOfType<AudioManager>().Play("Place");
+                AddObject();
             }
 
-            AddObject();
         }
     }
 }
