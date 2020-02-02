@@ -111,6 +111,24 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Goal
+    clip: {fileID: 8300000, guid: 05cdddb1d0b074f54ae39efdefc50717, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Item
+    clip: {fileID: 8300000, guid: 3d2f176d00ad44daf848ecb269a42f1e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Block
+    clip: {fileID: 8300000, guid: 34890c27aaaf54958bae13a8d78e28d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &9101700930972047111
 MonoBehaviour:
   m_ObjectHideFlags: 0

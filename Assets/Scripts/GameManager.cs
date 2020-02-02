@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log($"Player {playerId + 1} wins!");
             StartCoroutine(WaitForVictorySequence());
+            FindObjectOfType<AudioManager>().Play("Goal");
         }
     }
 

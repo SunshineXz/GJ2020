@@ -11,5 +11,6 @@ public abstract class EffectItem : Item
     {
         itemController.PickUpEffectItem(this);
         Destroy();
+        FindObjectOfType<AudioManager>().Play("Item");
     }
 }
