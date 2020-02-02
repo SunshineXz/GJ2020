@@ -248,6 +248,7 @@ public class CharacterMovementController : MonoBehaviour
     IEnumerator WaitToStartStunParticleSystem()
     {
         yield return new WaitForSeconds(0.1f);
+        GetComponent<ItemController>().DropRepairItem();
         stunParticleSystem.Play();
         slamParticleSystem.Play();
     }
