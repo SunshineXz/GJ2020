@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1877016841550321845
+--- !u!1 &5531347522723720223
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1877016841550321847}
-  - component: {fileID: 1877016841550321846}
+  - component: {fileID: 5531347522723720221}
+  - component: {fileID: 5531347522723720220}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: AudioManager 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1877016841550321847
+--- !u!4 &5531347522723720221
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877016841550321845}
+  m_GameObject: {fileID: 5531347522723720223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1877016841550321846
+--- !u!114 &5531347522723720220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877016841550321845}
+  m_GameObject: {fileID: 5531347522723720223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8bbe0f202a584814a72ba5ae9ba561e, type: 3}
@@ -49,4 +49,52 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: 3b1c822f03e30482f92cd30a0325faf5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Revealed
+    clip: {fileID: 8300000, guid: 1bab752451de94e7c8fcb19f88d48a4d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack
+    clip: {fileID: 8300000, guid: 9971626802ad14963ba4aeb483d9ad4b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Slapped
+    clip: {fileID: 8300000, guid: cfee4eeb700534ba09ed3c0462734046, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Damage
+    clip: {fileID: 8300000, guid: dca69b6d3efa14fbea2cd9ecd383bee2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Spit
+    clip: {fileID: 8300000, guid: 2f01fd6df68334a8085e221595db991a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Boost
+    clip: {fileID: 8300000, guid: 40f4f6771836c4aadabf5214ef9a8d0c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Arena
+    clip: {fileID: 8300000, guid: a796938f08f924ef4805f3914aa02e9a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
