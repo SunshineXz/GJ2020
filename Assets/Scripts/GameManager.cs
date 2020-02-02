@@ -33,11 +33,12 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        SpawnRepairItem();
+        StartCoroutine(SpawnRepairItem());
     }
 
-    public void SpawnRepairItem()
+    public IEnumerator SpawnRepairItem()
     {
+        yield return new WaitForSeconds(2f);
         System.Random random = new System.Random();
         repairSpawnPoints[random.Next(repairSpawnPoints.Count)].SpawnItem();
     }
