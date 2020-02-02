@@ -19,10 +19,11 @@ public class CharacterMovementController : MonoBehaviour
     public GameObject shieldObject;
     public ParticleSystem infiniteShootParticleSystem;
     public ParticleSystem boostParticleSystem;
+    public ItemRecharge itemRecharge;
+    public Recharge recharge;
     public ParticleSystem stunParticleSystem;
 
     //Stun
-    public float stunTime = 2.0f;
     private bool isStunned = false;
     private float stunnedtimer;
     public bool shieldUp = false;
@@ -57,16 +58,24 @@ public class CharacterMovementController : MonoBehaviour
             if(Time.time >= shootTimer)
             {
                 anim.SetTrigger("Shoot");
+
                 var projectile = Instantiate(projectilePrefab, transform);
 
                 projectile.GetComponent<SpitController>().shooter = gameObject;
                 projectile.transform.parent = null;
                 projectile.transform.localScale = GlobalVariables.GlobalVariablesInstance.SHOOT_BASE_SCALE;
 
+                var cooldown = 0.0f;
                 if(infiniteShoot)
-                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN;
+                {
+                    cooldown = GlobalVariables.GlobalVariablesInstance.BULLET_TIME_REDUCED_COOLDOWN;
+                }
                 else
-                    shootTimer = Time.time + GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
+                {
+                    cooldown = GlobalVariables.GlobalVariablesInstance.SHOOT_COOLDOWN_TIME;
+                }
+                shootTimer = Time.time + cooldown;
+                recharge.PutOnCooldown(cooldown);
             }
         }
 
@@ -124,6 +133,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         movementSpeed *= movementSpeedMultiplier;
         boostParticleSystem.Play();
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(ResetMovementSpeed(time, itemToDestroy));
     }
 
@@ -139,6 +149,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         shieldUp = true;
         shieldObject.SetActive(true);
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(ShieldDown(time, itemToDestroy));
     }
 
@@ -154,6 +165,7 @@ public class CharacterMovementController : MonoBehaviour
     {
         infiniteShoot = true;
         infiniteShootParticleSystem.Play();
+        itemRecharge.PutOnCooldown(time);
         StartCoroutine(InfiniteShootDown(time, itemToDestroy));
     }
 

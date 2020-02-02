@@ -16,6 +16,7 @@ public class PlayerBase : MonoBehaviour
             {
                 GameManager.Instance.ScorePoint(GO.GetComponent<CharacterMovementController>().playerID);
                 Destroy(controller.currentRepairItem.gameObject);
+                controller.repairImage.sprite = null;
                 controller.currentRepairItem = null;
             }
         }
