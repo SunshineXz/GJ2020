@@ -5548,8 +5548,7 @@ MonoBehaviour:
   bitchSlapCollider: {fileID: 717716272103431807}
   shieldObject: {fileID: 2865851473823736296}
   infiniteShootParticleSystem: {fileID: 717716272159538144}
-  boostParticleSystem: {fileID: 3693120551173052565, guid: e18f7251862bc20459633421071d3350,
-    type: 3}
+  boostParticleSystem: {fileID: 3161677871050354175}
   itemRecharge: {fileID: 0}
   recharge: {fileID: 0}
   stunParticleSystem: {fileID: 6886458024914066922}
@@ -6416,6 +6415,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f7251862bc20459633421071d3350, type: 3}
+--- !u!1 &3161677871050354175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 937385361098374466, guid: e18f7251862bc20459633421071d3350,
+    type: 3}
+  m_PrefabInstance: {fileID: 2802024299903324349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6999892477867077197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5171917285047287536, guid: e18f7251862bc20459633421071d3350,
