@@ -154,6 +154,7 @@ public class CharacterMovementController : MonoBehaviour
             if(!shieldUp)
             {
                 SetMovementSpeed(GlobalVariables.GlobalVariablesInstance.SLOW_SPEED_MULTIPLIER, GlobalVariables.GlobalVariablesInstance.SLOW_TIME);
+                FindObjectOfType<AudioManager>().Play("Damage");
             }
         }
     }
@@ -196,6 +197,7 @@ public class CharacterMovementController : MonoBehaviour
         shieldObject.SetActive(true);
         itemRecharge.PutOnCooldown(time);
         StartCoroutine(ShieldDown(time, itemToDestroy));
+        FindObjectOfType<AudioManager>().Play("Shield");
     }
 
     private IEnumerator ShieldDown(float time, GameObject itemToDestroy)
