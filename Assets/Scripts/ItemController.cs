@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Rewired;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,18 +8,22 @@ public class ItemController : MonoBehaviour
 {
     public RepairItem currentRepairItem;
     public EffectItem currentEffectItem;
+    public int playerID;
+    public Player player;
 
     public ItemRecharge itemRecharge;
     public Image repairImage;
+   
+    void Start()
+    {
+        player = ReInput.players.GetPlayer(playerID);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.F))
-        {
-            DropRepairItem();
-        }
-        if(Input.GetKey(KeyCode.E))
+        if (player.GetButtonDown("Use"))
         {
             UseItem();
         }
