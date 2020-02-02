@@ -21,6 +21,7 @@ public class CharacterMovementController : MonoBehaviour
     public ParticleSystem boostParticleSystem;
     public ItemRecharge itemRecharge;
     public Recharge recharge;
+    public ParticleSystem stunParticleSystem;
 
     //Stun
     private bool isStunned = false;
@@ -102,7 +103,10 @@ public class CharacterMovementController : MonoBehaviour
             isStunned = Time.time  <= stunnedtimer;
 
             if (!isStunned)
+            {
                 anim.SetBool("Stunned", false);
+                stunParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
         }
 
         float rx = player.GetAxis("HorizontalRotation");
@@ -182,6 +186,8 @@ public class CharacterMovementController : MonoBehaviour
     {
         isStunned = true;
         stunnedtimer = Time.time + duration;
+
+        stunParticleSystem.Play();
         anim.SetBool("Stunned", true);
     }
 
