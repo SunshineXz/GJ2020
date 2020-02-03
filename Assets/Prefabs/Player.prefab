@@ -5618,6 +5618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRepairItem: {fileID: 0}
   currentEffectItem: {fileID: 0}
+  playerID: 0
   itemRecharge: {fileID: 0}
   repairImage: {fileID: 0}
 --- !u!114 &943950219138839217
@@ -6474,7 +6475,7 @@ PrefabInstance:
     - target: {fileID: 5271707614830652190, guid: 19ae1fdfdf7638243bade91dad627636,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5271707614830652190, guid: 19ae1fdfdf7638243bade91dad627636,
         type: 3}
